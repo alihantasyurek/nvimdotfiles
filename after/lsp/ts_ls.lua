@@ -22,8 +22,6 @@ return {
     implicitProjectConfiguration = {
       checkJs = true,
       module = 'nodenext',
-      -- module = 'esnext',
-      -- module = 'commonjs',
       target = 'es2022',
     },
 

@@ -9,6 +9,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 vim.opt.list = false
 vim.opt.listchars = {}
@@ -43,8 +44,8 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set('n', '<leader>j', '<cmd>cnext<CR>zz')
 vim.keymap.set('n', '<leader>k', '<cmd>cprev<CR>zz')
 
-vim.keymap.set('n', '<C-n>', ':bnext<CR>')
-vim.keymap.set('n', '<C-p>', ':bprevious<CR>')
+vim.keymap.set('n', '<C-l>', ':bnext<CR>')
+vim.keymap.set('n', '<C-h>', ':bprevious<CR>')
 vim.keymap.set('n', '<C-x>', ':bdelete<CR>')
 vim.keymap.set('n', '<C-s>', '<cmd>silent :w | %bd! | e#<CR>')
 
@@ -75,6 +76,10 @@ end)
 
 local methods = vim.lsp.protocol.Methods
 local ellipsis = '...'
+
+vim.keymap.set({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+vim.keymap.set({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Workaround for truncating long TypeScript inlay hints.
 -- local inlay_hint_handler = vim.lsp.handlers[methods.textDocument_inlayHint]

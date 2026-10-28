@@ -86,6 +86,22 @@ return {
 					},
 				},
 			})
+
+			vim.api.nvim_create_autocmd("LspAttach", {
+				desc = "Recompute ufo folds when an LSP folding provider attaches",
+				callback = function(ev)
+					local client = vim.lsp.get_client_by_id(ev.data.client_id)
+					if not client or not client:supports_method("textDocument/foldingRange", ev.buf) then
+						return
+					end
+					vim.schedule(function()
+						local ufo = require("ufo")
+						if vim.api.nvim_buf_is_valid(ev.buf) and ufo.hasAttached(ev.buf) then
+							ufo.enableFold(ev.buf)
+						end
+					end)
+				end,
+			})
 		end,
 	},
 }

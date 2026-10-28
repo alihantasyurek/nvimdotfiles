@@ -5,9 +5,24 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
-      }
+
+      -- lint.linters.oxlint.args = {
+      --   '--deny',
+      --   'correctness',
+      --   '--deny',
+      --   'suspicious',
+      --   '--deny',
+      --   'typescript/no-floating-promises',
+      --   '--type-aware',
+      -- }
+      --
+      -- lint.linters_by_ft = {
+      --   markdown = { 'markdownlint' },
+      --   javascript = { 'oxlint' },
+      --   javascriptreact = { 'oxlint' },
+      --   typescript = { 'oxlint' },
+      --   typescriptreact = { 'oxlint' },
+      -- }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
