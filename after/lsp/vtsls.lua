@@ -1,6 +1,7 @@
 return {
   settings = {
     typescript = {
+      reportStyleChecksAsWarnings = true,
       inlayHints = {
         parameterNames = {
           enabled = 'none',

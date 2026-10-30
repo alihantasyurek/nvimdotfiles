@@ -411,8 +411,16 @@ require('lazy').setup({
             'package%-lock.json',
             'package.json',
           },
-          mappings = {
-            i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+        },
+        mappings = {
+          i = {
+            ['<c-enter>'] = 'to_fuzzy_refine',
+            ['<c-t>'] = require('trouble.sources.telescope').open,
+            ['<c-a>'] = require('trouble.sources.telescope').add,
+          },
+          n = {
+            ['<c-t>'] = require('trouble.sources.telescope').open,
+            ['<c-a>'] = require('trouble.sources.telescope').add,
           },
         },
         -- pickers = {}
