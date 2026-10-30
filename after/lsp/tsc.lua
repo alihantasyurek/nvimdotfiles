@@ -3,6 +3,11 @@ return {
     experimental = {
       hoverVerbosityLevel = true,
     },
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
   },
 
   settings = {

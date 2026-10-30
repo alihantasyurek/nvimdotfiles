@@ -13,6 +13,13 @@ return {
       adapters = {
         require 'neotest-vitest' {},
         require 'neotest-jest' {},
+        -- might want to open this if i'm not in the root and tests won't run properly because of it
+        require 'neotest-jest' {
+          isTestFile = function(path)
+            local ok, result = pcall(require('neotest-jest.jest-util').defaultIsTestFile, path)
+            return ok and result
+          end,
+        },
       },
 
       diagnostic = {
@@ -25,18 +32,18 @@ return {
       },
 
       output = {
-        open_on_run = true,
+        open_on_run = false,
       },
     }
   end,
 
   keys = {
     {
-      '<leader>tr',
+      '<leader>tt',
       function()
         require('neotest').run.run()
       end,
-      desc = 'Run nearest test',
+      desc = 'Run this nearest test',
     },
     {
       '<leader>ta',
